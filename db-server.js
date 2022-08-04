@@ -5,11 +5,11 @@ var http = require("http")
 var https = require("https")
 var privateKey = fs.readFileSync("cert/cloudcert.key", "utf8")
 var certificate = fs.readFileSync("cert/cloudcert.pem", "utf8")
-var credentials = {key: privateKey, cert: certificate};
+var credentials = { key: privateKey, cert: certificate }
 const jwt = require("jsonwebtoken")
 const DataLoader = require("dataloader")
 const data = require("./data/users")
-const { authors, books, whitelist } = require("./data/data")
+const { authors, books, whitelist, JWT_SECRET } = require("./data/data")
 const cors = require("cors")
 const express = require("express")
 const db = require("./db")
@@ -123,12 +123,12 @@ app.use(bodyParser.json())
 app.post("/api/auth", (req, res) => {
   // console.log(req.body)
   let user = data.users.filter(user => {
-    return user.name == req.body.name && user.password == req.body.password
+    return user.name == req.body.username && user.password == req.body.password
   })
   if (user.length) {
     // create a token using user name and password vaild for 2 hours
     let token_payload = { name: user[0].name, password: user[0].password }
-    let token = jwt.sign(token_payload, "jwt_secret_password", { expiresIn: "2h" })
+    let token = jwt.sign(token_payload, JWT_SECRET, { expiresIn: "2h" })
     let response = { message: "Token Created, Authentication Successful!", token: token }
 
     // return the information including token as JSON
@@ -139,8 +139,8 @@ app.post("/api/auth", (req, res) => {
 })
 
 // app.listen({ port: port }, () => console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`))
-var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+var httpServer = http.createServer(app)
+var httpsServer = https.createServer(credentials, app)
 
-httpServer.listen({ port: 9000 }, () => console.log(`🚀 http Server ready at http://localhost:9000${server.graphqlPath}`));
-httpsServer.listen({ port: 2096 }, () => console.log(`🚀 https Server ready at https://localhost:2096${server.graphqlPath}`));
+httpServer.listen({ port: 9000 }, () => console.log(`🚀 http Server ready at http://localhost:9000${server.graphqlPath}`))
+httpsServer.listen({ port: 2096 }, () => console.log(`🚀 https Server ready at https://localhost:2096${server.graphqlPath}`))
