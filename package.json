@@ -1,0 +1,32 @@
+{
+  "name": "aplsrv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index",
+    "pmserver": "pm2 -f start db-server.js",
+    "pmsserver": "pm2 stop db-server",
+    "dserver": "nodemon dog-server.js",
+    "dbserver": "nodemon db-server.js"
+  },
+  "author": "Matthew Budd",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.6.6",
+    "apollo-server": "^2.9.7",
+    "apollo-server-express": "^2.9.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dataloader": "^2.0.0",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.6",
+    "isemail": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.4",
+    "notarealdb": "^0.2.2",
+    "pm2": "^4.5.6"
+  }
+}

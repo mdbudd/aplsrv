@@ -1,0 +1,57 @@
+type Query {
+  test: String
+  greeting: String
+  getStudents: [Student]
+  getJobs: [Job]
+  getSkills: [Skill]
+  getHits: [Hit]
+  studentById(id: ID!): Student
+  books: [Book]
+}
+type Mutation {
+  createStudent(firstName: String, lastName: String, password: String, email: String, new: String): Student
+  createJob(title: String, from: String, to: String, company: String, description: String): Job
+  createSkill(title: String, description: String, link: String, level: Int): Skill
+  createHit(title: String, ref: String, lat: String, lon: String, date: String): Hit
+}
+type Student {
+  id: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  new: String
+}
+type Job {
+  id: String
+  title: String
+  from: String
+  to: String
+  company: String
+  description: String
+}
+type Skill {
+  id: String
+  title: String
+  link: String
+  description: String
+  level: Int
+}
+type Hit {
+  id: String
+  title: String
+  ref: String
+  lat: String
+  lon: String
+  date: String
+}
+type Book {
+  id: ID
+  title: String
+  author: Author
+}
+
+type Author {
+  name: String
+  email: String
+}

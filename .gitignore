@@ -1,0 +1,6 @@
+node_modules
+cert
+data
+data2
+!data/.keep
+!data2/.keep
