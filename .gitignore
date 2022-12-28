@@ -4,3 +4,5 @@ data/*
 data2/*
 !data/.keep
 !data2/.keep
+.env
+cors/setup.js

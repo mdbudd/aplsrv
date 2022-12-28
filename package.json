@@ -1,5 +1,5 @@
 {
-  "name": "aplsrv",
+  "name": "apollo-server.mdb",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,17 +9,24 @@
     "pmserver": "pm2 -f start db-server.js",
     "pmsserver": "pm2 stop db-server",
     "dserver": "nodemon dog-server.js",
-    "dbserver": "nodemon db-server.js"
+    "dbserver_": "nodemon db-server.js",
+    "dbserver": "nodemon srv.js"
   },
-  "author": "Matthew Budd",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "apollo-datasource-rest": "^0.6.6",
     "apollo-server": "^2.9.7",
     "apollo-server-express": "^2.9.7",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dataloader": "^2.0.0",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "graphql": "^14.5.8",
     "graphql-tools": "^4.0.6",
